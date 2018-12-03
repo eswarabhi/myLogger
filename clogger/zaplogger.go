@@ -1,4 +1,4 @@
-package logger
+package clogger
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ func (*ZapLoggerFactory) GetLogger(name string) Logger {
 	mutex.RLock()
 	l := loggerMap[name]
 	mutex.RUnlock()
-	
+
 	if l == nil {
 		var err error
 		l, err = newZapChildLogger(rootLogger, name)

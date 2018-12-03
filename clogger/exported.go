@@ -1,4 +1,4 @@
-package logger
+package clogger
 
 import (
 	"fmt"
@@ -64,5 +64,3 @@ func getDefaultLogger() Logger {
 	}
 	return defLogger
 }
-
-

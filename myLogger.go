@@ -9,14 +9,6 @@ import (
 
 var logLevel = logrus.DebugLevel
 
-type logFormatter struct {
-	name string
-}
-
-func (lf *logFormatter) Format(entry *logrus.Entry) ([]byte, error) {
-	logEntry := fmt.Sprintf("%s %-5s [microgateway][%s] - %s \n", entry.Time.Format("2006-01-02 15:04:05.000"), getLevel(entry.Level), lf.name, entry.Message)
-	return []byte(logEntry), nil
-}
 
 func getLevel(level logrus.Level) string {
 	switch level {
@@ -37,7 +29,7 @@ func getLevel(level logrus.Level) string {
 }
 
 // GetLogger returs logger
-func GetLogger(loggerName string) *logrus.Logger {
+func GetLogger() *logrus.Logger {
 	logger := logrus.New()
 	// logger.SetFormatter(&logrus.JSONFormatter{})
 	logger.SetFormatter(&logrus.TextFormatter{
